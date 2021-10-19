@@ -68,6 +68,8 @@ contract MyEpicNFT is ERC721URIStorage {
         "Thirteen"
     ];
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
+
     function pickRandomLanguage(uint256 tokenId)
         public
         view
@@ -162,5 +164,7 @@ contract MyEpicNFT is ERC721URIStorage {
 
         // Increment the counter for when the next NFT is minted.
         _tokenIds.increment();
+
+        emit NewEpicNFTMinted(msg.sender, newItemId);
     }
 }
